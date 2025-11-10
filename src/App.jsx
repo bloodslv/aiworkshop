@@ -2,9 +2,27 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Payment from './components/Payment'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [showPayment, setShowPayment] = useState(false)
+
+  if (showPayment) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 py-8">
+        <div className="container mx-auto px-4">
+          <button 
+            onClick={() => setShowPayment(false)}
+            className="mb-6 bg-gray-600 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition-colors"
+          >
+            ← Back to Home
+          </button>
+          <Payment />
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
@@ -29,6 +47,13 @@ function App() {
               onClick={() => setCount((count) => count + 1)}
             >
               Count is {count}
+            </button>
+            
+            <button 
+              onClick={() => setShowPayment(true)}
+              className="w-full mt-4 bg-gradient-to-r from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-green-300"
+            >
+              🔐 Open Payment Form
             </button>
             
             <p className="mt-6 text-gray-600 dark:text-gray-300 text-center">
